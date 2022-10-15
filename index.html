@@ -5,21 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo List</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <div class="holder">
-      <div >
-        <input type="text" placeholder="Enter your to list" id="input"/>
-        <button class="todobtn">Add</button>
-        <ul id="todoholder">
-          <li >Do Homework</li>
-          <li >Do laundary</li>
-        </ul>
+    <div class="container">
+      <div class="holder">
+        <div>
+          <input type="text" placeholder="Enter your to list" id="input" />
+          <button class="todobtn">Add</button>
+          <ul id="todoholder">
+            <li>
+              <input type="checkbox" id="check" name="accept" onchange="checklist()" />Do Homework 
+            </li>
+            <li>
+              <input type="checkbox" id="check" name="accept" onchange="checklist()"/>Do laundary
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    
     <script src="/assets/app.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+      integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </body>
 </html>
