@@ -21,12 +21,10 @@
           <input type="text" placeholder="Enter your to list" id="input" />
           <button class="todobtn">Add</button>
           <ul id="todoholder">
-            <li>
-              <input type="checkbox" id="check" name="accept" onchange="checklist()" />Do Homework 
-            </li>
-            <li>
-              <input type="checkbox" id="check" name="accept" onchange="checklist()"/>Do laundary
-            </li>
+            <li><input type="checkbox" id="check" name="accept" onchange="checklist(this) " />Do Homework
+              <button class="del_button" onchange="delete_check(this)">Delete</button></li>
+            <li><input type="checkbox" id="check" name="accept" onchange="checklist(this)" />Do laundary
+              <button class="del_button">Delete</button></li>
           </ul>
         </div>
       </div>

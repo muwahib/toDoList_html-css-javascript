@@ -23,3 +23,7 @@
 li{
     list-style-type: none;
 }
+.done{
+    text-decoration: line-through;
+    color: white;
+}
