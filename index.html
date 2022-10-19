@@ -17,16 +17,20 @@
   <body>
     <div class="container">
       <div class="holder">
-        <div>
+
+        <div class="myTodo">
           <input type="text" placeholder="Enter your to list" id="input" />
           <button class="todobtn">Add</button>
+
           <ul id="todoholder">
             <li><input type="checkbox" id="check" name="accept" onchange="checklist(this) " />Do Homework
               <button class="del_button" onclick="delete_todo(this)">Delete</button></li>
             <li><input type="checkbox" id="check" name="accept" onchange="checklist(this)" />Do laundary
               <button class="del_button" onclick="delete_todo(this)">Delete</button></li>
           </ul>
+          
         </div>
+
       </div>
     </div>
 
