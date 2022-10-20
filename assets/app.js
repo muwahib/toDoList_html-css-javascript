@@ -1,82 +1,91 @@
-var inputText = document.getElementById("input")[0];
-let todobtn = document.querySelector(".todobtn") || [0];
-todobtn.addEventListener('click', () => {
-  todolist();
-  if (inputText.value.trim() != 0){
-    let storage = JSON.parse( localStorage.getItem("storage"))
-    if(storage === null){
+// add function
+todo = [];
+function addtodo(){
+  var inputText = document.getElementById("input"); 
+  if (inputText.value != null){
+    localStorage.setItem("todos", JSON.stringify(todo));
+    if (storage == null){
       todo = [];
-    }else{
+    } else {
       todo = storage;
     }
-    storage.push(input.value);
-    localStorage.setItem("storage", JSON.stringify(todo));
+    storage.push(todo);
+    var storage = JSON.parse(localStorage.getItem("todos"));
   }
-  showtodo();
-})
-todo = [];
+}
 
-function showtodo(){
+// btn event listners
+
+var inputText = document.getElementById("input");
+var todobtn = document.querySelector(".todobtn");
+todobtn.addEventListener('click', () =>{
+  addtodo();
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function checktodo
+// function checktodo(inputcheckbox){
+
+//   if (inputcheckbox.checked){
+//     inputcheckbox.parentElement.classlist.add("done")
+//   }else{
+//     inputcheckbox.parentElement.classlist.remove("done")
+//   }
   
-  let output = "";
-  var todoHolder_ul = document.getElementById("todoholder");
-  let storage = JSON.parse( localStorage.getItem("storage"))
-  if(storage === null){
-    todo = [];
-  }else{
-    todo = storage;
-  } 
-  todo.forEach((data, index) => {
-    output += ` <li>
-    <input type="checkbox" id="check" name="accept" onchange="checklist(this)" />${data}
-    <button class="del_button" onclick="delete_todo(${index})">Delete</button></li>`
-  });
-  todoHolder_ul.innerHTML = output;
-}
+// }
 
-function todolist() {
-  var todo_template = ` <li>
-  <input type="checkbox" id="check" name="accept" onchange="checklist(this)" />Do Homework 
-  <button class="del_button" onclick="delete_todo(this)">Delete</button></li>`
-  var inputText = document.getElementById("input");
-  var todoHolder_ul = document.getElementById("todoholder");
-  var li = document.createElement("li");
-  var inputcheckbox = document.createElement("input");
-  inputcheckbox.setAttribute("type", "checkbox");
-  // li.innerHTML = localStorage.getItem("todo1");
-  // localStorage.getItem("todo1");
-  if (inputText.value == "") {
-    alert("ma madhnan karo")
-  } else {
-    inputcheckbox.innerHTML = inputText.value;
-    li.innerHTML = inputText.value;
-    todoHolder_ul.innerHTML += ` <li>
-        <input type="checkbox" id="check" name="accept" onchange="checklist(this)" />${inputText.value}
-        <button class="del_button" onclick="delete_todo(this)"">Delete</button></li>`
-    // localStorage.setItem("todo1", inputText.value);
-    // inputText.value = "";  
-  }
-}
+// show function
+// function showtodo(){
+//   var todoTemplate = ` <li>
+//   <input type="checkbox" id="check" name="accept" onchange="checktodo(this)" />Do homework
+//   <button class="del_button" onclick="delete_todo(this)">Delete</button></li>`;
+//   var inputText = document.getElementById("input");
+//   var todoholder_ul = document.getElementById("todoholder");
+//   var li = document.createElement("li");
+//   var inputcheckbox = document.createElement("input");
+//   inputcheckbox.setAttribute("type", "checkbox");
+//   if (inputText.value == ""){
+//     alert("can't be null")
+//   }else{
+//     inputcheckbox.innerHTML = inputText.value;
+//     li.innerHTML = inputText.value;
+//     todoholder_ul.innerHTML += `<li>
+//     <input type="checkbox" id="check" name="accept" onchange="checktodo(this)" />${inputText.value} 
+//     <button class="del_button" onclick="delete_todo(this)">Delete</button></li>`;
+//   }
+// }
+// delete function
 
-function checklist(inputcheckbox) {
+// update function
 
-  if (inputcheckbox.checked) {
-    inputcheckbox.parentElement.classList.add("done");
 
-  } else {
-    inputcheckbox.parentElement.classList.remove("done");
-  }
-}
-
-function delete_todo(index) {
-
-    let storage = JSON.parse(localStorage.getItem("storage"))
-    todo.splice(index, 1)
-    localStorage.setItem("storage", JSON.stringify(todo));
-  showtodo();
-}
-
-function cleartodo(){
-  localStorage.clear()
-  showtodo();
-}
+// output += ` <li>
+// <input type="checkbox" id="check" name="accept" onchange="checktodo(this)" />${data}
+// <button class="del_button" onclick="delete_todo(${index})">Delete</button></li>`
