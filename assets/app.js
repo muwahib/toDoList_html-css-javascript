@@ -1,16 +1,27 @@
 // add function
+
 todo = [];
 function addtodo(){
   var inputText = document.getElementById("input"); 
-  if (inputText.value != null){
-    localStorage.setItem("todos", JSON.stringify(todo));
-    if (storage == null){
-      todo = [];
-    } else {
-      todo = storage;
-    }
-    storage.push(todo);
+  if (inputText.value != ""){
     var storage = JSON.parse(localStorage.getItem("todos"));
+    if (storage == null){
+      localStorage.setItem("todos", JSON.stringify(""));
+      storage = JSON.parse(localStorage.getItem("todos"))
+      todo = [];
+      // todo.push(storage);
+    } else {
+      storage = JSON.parse(localStorage.getItem("todos"));
+      todo.push(storage);
+      todo.push(inputText.value);
+      var names = ["warsame", "ali"]
+      names.push(inputText.value)
+      localStorage.setItem("todos", JSON.stringify(names));
+    }
+    // storage.push(todo);
+    // localStorage.setItem("todos", JSON.stringify(inputText.value));
+  }else {
+    alert("can't be empty");
   }
 }
 
@@ -23,65 +34,10 @@ todobtn.addEventListener('click', () =>{
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // function checktodo
-// function checktodo(inputcheckbox){
 
-//   if (inputcheckbox.checked){
-//     inputcheckbox.parentElement.classlist.add("done")
-//   }else{
-//     inputcheckbox.parentElement.classlist.remove("done")
-//   }
-  
-// }
 
 // show function
-// function showtodo(){
-//   var todoTemplate = ` <li>
-//   <input type="checkbox" id="check" name="accept" onchange="checktodo(this)" />Do homework
-//   <button class="del_button" onclick="delete_todo(this)">Delete</button></li>`;
-//   var inputText = document.getElementById("input");
-//   var todoholder_ul = document.getElementById("todoholder");
-//   var li = document.createElement("li");
-//   var inputcheckbox = document.createElement("input");
-//   inputcheckbox.setAttribute("type", "checkbox");
-//   if (inputText.value == ""){
-//     alert("can't be null")
-//   }else{
-//     inputcheckbox.innerHTML = inputText.value;
-//     li.innerHTML = inputText.value;
-//     todoholder_ul.innerHTML += `<li>
-//     <input type="checkbox" id="check" name="accept" onchange="checktodo(this)" />${inputText.value} 
-//     <button class="del_button" onclick="delete_todo(this)">Delete</button></li>`;
-//   }
-// }
-// delete function
 
 // update function
 
