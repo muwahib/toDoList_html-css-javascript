@@ -1,47 +1,59 @@
 // add function
 
 todo = [];
+
 function addtodo(){
-  var inputText = document.getElementById("input"); 
-  if (inputText.value != ""){
-    var storage = JSON.parse(localStorage.getItem("todos"));
-    if (storage == null){
-      localStorage.setItem("todos", JSON.stringify(""));
-      storage = JSON.parse(localStorage.getItem("todos"))
-      todo = [];
-      // todo.push(storage);
+  let inputText = document.getElementById("input"); 
+  if (inputText.value !== ""){
+    let storage = JSON.parse(localStorage.getItem("todos"));
+    
+    if (storage == null ){
+      var obj = [
+        {
+          task : inputText.value,
+          status: "undone"
+        }
+      ]
+      console.log(obj)
+      localStorage.setItem("todos", JSON.stringify(obj));
+      
     } else {
-      storage = JSON.parse(localStorage.getItem("todos"));
-      todo.push(storage);
-      todo.push(inputText.value);
-      var names = ["warsame", "ali"]
-      names.push(inputText.value)
-      localStorage.setItem("todos", JSON.stringify(names));
-    }
-    // storage.push(todo);
-    // localStorage.setItem("todos", JSON.stringify(inputText.value));
-  }else {
+        // todo = [];
+        // storage = JSON.parse(localStorage.getItem("todos"));
+        // todo.push(storage);
+        // todo.push(inputText.value);
+        // localStorage.setItem("todos", JSON.stringify(todo));
+        // console.log(todo);
+        var todos = JSON.parse(localStorage.getItem("todos"));
+        var td = Array.from(todos);
+        localStorage.setItem("todos", JSON.stringify([...JSON.parse(localStorage.getItem("todos") || "[]"),
+        {
+          task : inputText.value,
+          status: "undone"
+        }
+      ]));
+        
+      }
+      
+   
+  } else {
     alert("can't be empty");
   }
 }
-
 // btn event listners
 
-var inputText = document.getElementById("input");
-var todobtn = document.querySelector(".todobtn");
+var inputText = document.getElementById("input")[0];
+var todobtn = document.querySelector(".todobtn") || [0];
 todobtn.addEventListener('click', () =>{
   addtodo();
+  // todolist();
 
 });
 
-// function checktodo
 
 
-// show function
-
-// update function
 
 
-// output += ` <li>
-// <input type="checkbox" id="check" name="accept" onchange="checktodo(this)" />${data}
-// <button class="del_button" onclick="delete_todo(${index})">Delete</button></li>`
+
+
+
