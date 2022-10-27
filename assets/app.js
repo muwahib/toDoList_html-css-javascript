@@ -1,45 +1,43 @@
 // btn event listners
 var inputText = document.getElementById("input")[0];
 var todobtn = document.querySelector(".todobtn") || [0];
-todobtn.addEventListener('click', () =>{
+todobtn.addEventListener('click', () => {
   addtodo();
- 
-});
 
+});
 // add function
 todo = [];
-function addtodo(){
-  let inputText = document.getElementById("input"); 
-  if (inputText.value !== ""){
+function addtodo() {
+  let inputText = document.getElementById("input");
+  if (inputText.value !== "") {
     let storage = JSON.parse(localStorage.getItem("todos"));
-    
-    if (storage == null ){
+
+    if (storage == null) {
       var obj = [
         {
-          task : inputText.value,
-          status: "undone"
+          task: inputText.value,
+          status: "checked"
         }
       ]
       // console.log(obj)
       localStorage.setItem("todos", JSON.stringify(obj));
     } else {
-        var todos = JSON.parse(localStorage.getItem("todos"));
-        var td = Array.from(todos);
-        localStorage.setItem("todos", JSON.stringify([...JSON.parse(localStorage.getItem("todos") || "[]"),
-        {
-          task : inputText.value,
-          status: "undone"
-        }
-      ]));  
+      var todos = JSON.parse(localStorage.getItem("todos"));
+      var td = Array.from(todos);
+      localStorage.setItem("todos", JSON.stringify([...JSON.parse(localStorage.getItem("todos") || "[]"),
+      {
+        task: inputText.value,
+        status: "unchecked"
       }
+      ]));
+    }
   } else {
     alert("can't be empty");
   }
   location.reload();
 }
-
 //show function
-function showtodo(){
+function showtodo() {
   // read from localstorage
   let storage = localStorage.getItem("todos");
 
@@ -48,38 +46,56 @@ function showtodo(){
 
   //post to my html
   var todoHolder_ul = document.getElementById("todoholder");
+
   temp = `<li>
   <input type="checkbox" id="check" name="accept" />
   <button class="del_button" >Delete</button>
   </li>`;
-  for (let i = 0; i < data.length; i++){
-    todoHolder_ul.innerHTML += `<li>
-    <input type="checkbox" id="check" name="accept" />
-    ${data[i].task}
-    <button class="del_button">Delete</button>
+  for (let i = 0; i < data.length; i++) {
+    let checked;
+    let lineClass;
+    if (data[i].status == "checked") {
+      checked = "checked";
+      lineClass = "done"
+    } else {
+      checked = ""
+      lineClass = ""
+    }
+    todoHolder_ul.innerHTML += `<li class="${lineClass}">
+    <input type="checkbox" id="check" name="accept" ${checked} onchange="update_todo(${[i]},this)"/>
+    ${data[i].task} 
+    <button class="del_button" onclick="delete_todo(${[i]},this)" >Delete</button>
     </li>`;
   }
- 
 }
-
-//delete function
-function delete_todo(){
-  
+// delete function
+function delete_todo(index) {
+  var todos = JSON.parse(localStorage.getItem("todos"));
+  var td = Array.from(todos);
+  console.log(td[index].status);
+  var deleted_index = td.splice(index, 1);
+  localStorage.setItem("todos", JSON.stringify(td));
+  location.reload();
 }
+// update function
+function update_todo(index, inputcheck) {
+  var checkbox = document.createElement("check");
+  checkbox.setAttribute("type", "checkbox");
+  var todos = JSON.parse(localStorage.getItem("todos"));
+  var td = Array.from(todos);
+  if (td[index].status == "unchecked") {
+    td[index].status = "checked"
+    inputcheck.parentElement.classList.add("done");
+    localStorage.setItem("todos", JSON.stringify(td));
 
-//update function
+  } else {
+    inputcheck.parentElement.classList.remove("done");
+    td[index].status = "unchecked"
+    localStorage.setItem("todos", JSON.stringify(td));
 
-
-
-//clear function
-
-
-// output += ` <li>
-// <input type="checkbox" id="check" name="accept" onchange="checktodo(this)" />${data}
-// <button class="del_button" onclick="delete_todo(${index})">Delete</button></li>`
-
+  }
+}
 // page load
-window.addEventListener("load", function(){
-  // alert("hi")
+window.addEventListener("load", function () {
   showtodo();
 })
