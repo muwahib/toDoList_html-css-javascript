@@ -1,9 +1,8 @@
 // btn event listners
-var inputText = document.getElementById("input")[0];
-var todobtn = document.querySelector(".todobtn") || [0];
+var inputText = document.getElementById("input");
+var todobtn = document.getElementById("todobtn");
 todobtn.addEventListener('click', () => {
   addtodo();
-
 });
 // add function
 todo = [];
@@ -11,7 +10,6 @@ function addtodo() {
   let inputText = document.getElementById("input");
   if (inputText.value !== "") {
     let storage = JSON.parse(localStorage.getItem("todos"));
-
     if (storage == null) {
       var obj = [
         {
