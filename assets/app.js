@@ -62,7 +62,7 @@ function showtodo() {
     todoHolder_ul.innerHTML += `<li class="${lineClass}">
     <input type="checkbox" id="check" name="accept" ${checked} onchange="update_todo(${[i]},this)"/>
     ${data[i].task} 
-    <button class="del_button" onclick="delete_todo(${[i]},this)" >Delete</button>
+    <button class="btn btn-danger btn-sm del_button" onclick="delete_todo(${[i]},this)" >Delete</button>
     </li>`;
   }
 }

@@ -43,7 +43,13 @@ li{
     text-decoration: line-through;
     color: black;
 }
-.check{
 
-    
+.del_button{
+    width: 100px;
+    position: absolute;
+    right: auto;
+    border-radius: 3px;
+    border: 12px;
+    row-gap: 10px;
+    border-bottom: white;
 }
